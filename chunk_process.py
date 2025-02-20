@@ -2,19 +2,16 @@ from langchain.text_splitter import CharacterTextSplitter
 
 
 def get_chunks(raw_text):
-    instruction="Represent a sentence for retrieval"
+    instruction = "Represent a sentence for retrieval"
     text_splitter = CharacterTextSplitter(
-        separator="\n",
-        chunk_size=1000,
-        chunk_overlap=200,
-        length_function=len
+        separator="\n", chunk_size=1000, chunk_overlap=200, length_function=len
     )
     chunks = text_splitter.split_text(raw_text)
-    data = [["Represent a sentence for retrieval",chunk] for chunk in chunks]
-    return chunks,data
+    data = [["Represent a sentence for retrieval", chunk] for chunk in chunks]
+    return chunks, data
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     text = """
         Donald John Trump (born June 14, 1946) is an American politician, media personality, and businessman serving as the 47th president of the United States since January 2025. A member of the Republican Party, he previously served as the 45th president from 2017 to 2021.
 
@@ -26,5 +23,5 @@ Trump is the central figure of the Trumpism movement. Many of his comments and a
 
 Trump began his second presidency by pardoning around 1,500 January 6 rioters, attempting to reduce the size of the federal workforce, and initiating a mass deportation program of illegal immigrants. His broad and extensive use of executive orders has drawn dozens of lawsuits challenging their legality.
     """
-    l=get_chunks(text)
+    l = get_chunks(text)
     print(len(l))
